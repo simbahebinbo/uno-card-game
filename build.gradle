@@ -1,57 +1,179 @@
-plugins {
-  id 'java'
-  id "org.sonarqube" version "3.0"
-  id 'jacoco'
-  id 'application'
+buildscript {
+    ext {
+
+    }
+
+    repositories {
+        maven {
+            allowInsecureProtocol = true
+            url 'https://maven.aliyun.com/repository/public/'
+        }
+        maven {
+            allowInsecureProtocol = true
+            url 'https://maven.aliyun.com/nexus/content/repositories/google'
+        }
+
+        maven {
+            allowInsecureProtocol = true
+            url 'https://maven.aliyun.com/nexus/content/repositories/jcenter'
+        }
+        maven {
+            allowInsecureProtocol = true
+            url "https://maven.aliyun.com/nexus/content/groups/public/"
+        }
+        maven {
+            allowInsecureProtocol = true
+            url = uri('https://maven.aliyun.com/nexus/content/repositories/central/')
+        }
+        maven {
+            allowInsecureProtocol = true
+            url = uri('https://repo.maven.apache.org/maven2/')
+        }
+        mavenLocal()
+        mavenCentral()
+        google()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
 }
 
-group 'tkcodes'
-version '2.0'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+
+
+group 'com.github.lansheng228'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+mainClassName = 'com.github.lansheng228.UNOCardGameApplication'
+archivesBaseName = 'uno-card-game'
+description = 'uno 纸牌游戏'
 
 repositories {
-  mavenCentral()
+    maven {
+        allowInsecureProtocol = true
+        url 'https://maven.aliyun.com/repository/public/'
+    }
+    maven {
+        allowInsecureProtocol = true
+        url 'https://maven.aliyun.com/nexus/content/repositories/google'
+    }
+
+    maven {
+        allowInsecureProtocol = true
+        url 'https://maven.aliyun.com/nexus/content/repositories/jcenter'
+    }
+    maven {
+        allowInsecureProtocol = true
+        url "https://maven.aliyun.com/nexus/content/groups/public/"
+    }
+    maven {
+        allowInsecureProtocol = true
+        url = uri('https://maven.aliyun.com/nexus/content/repositories/central/')
+    }
+    maven {
+        allowInsecureProtocol = true
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+    mavenLocal()
+    mavenCentral()
+    google()
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
+    implementation "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
+    implementation("org.springframework.boot:spring-boot-starter-data-rest:$springBootVersion")
+//    implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-aop:$springBootVersion")
+    implementation "org.springframework.boot:spring-boot-starter-logging:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-configuration-processor:$springBootVersion"
+//    implementation("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
+//    implementation("org.springframework.boot:spring-boot-starter-hateoas:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-autoconfigure:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-validation:$springBootVersion")
 
-  implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
-  implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+    implementation("io.micrometer:micrometer-core:$micrometerVersion")
+    implementation("io.micrometer:micrometer-registry-prometheus:$micrometerVersion")
 
-  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.3'
-  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+//    implementation "com.mysql:mysql-connector-j:${mysqlconnectorVersion}"
+//    implementation("org.redisson:redisson:${redissonVersion}")
 
-  testImplementation 'org.junit.jupiter:junit-jupiter-params:5.6.3'
-  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-params:5.6.3'
+    implementation "com.google.code.gson:gson:${gsonVersion}"
+    implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+
+    implementation("com.google.guava:guava:$guavaVersion")
+    implementation("cn.hutool:hutool-all:$hutoolVersion")
+
+    implementation "commons-io:commons-io:${commonsioVersion}"
+    implementation "org.apache.commons:commons-lang3:${commonslang3Version}"
+    implementation "commons-codec:commons-codec:${commonscodecVersion}"
+    implementation("org.apache.commons:commons-collections4:$commonsCollections4Version")
+    implementation("org.apache.commons:commons-pool2:$commonsPool2Version")
+
+//    implementation("org.apache.httpcomponents.client5:httpclient5:$httpclientVersion")
+
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+
+//    testImplementation("com.h2database:h2:$h2Version")
+//    testImplementation("com.github.lansheng228:embedded-redis:${embeddedRedisVersion}")
+
+    testImplementation("org.awaitility:awaitility:$awaitilityVersion")
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+    testImplementation("org.mockito:mockito-junit-jupiter:$mockitoVersion")
 }
 
-application {
-  mainClassName = 'UnoApp'
+wrapper {
+    gradleVersion = '8.6'
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    options.compilerArgs << "-Xlint:unchecked"
+    options.compilerArgs << "-Xlint:deprecation"
+}
+
+tasks.withType(Test).configureEach {
+    testLogging {
+        events 'started', 'passed'
+    }
+}
+
+compileJava {
+    options.compilerArgs << '-Xlint:deprecation' << '-Xlint:unchecked'
 }
 
 test {
-  useJUnitPlatform()
-
-  jacoco {
-    enabled = System.getenv("CI") == "true"
-  }
+    testLogging.showStandardStreams = true
+    useJUnitPlatform()
 }
 
-jacocoTestReport {
-  reports {
-    xml.enabled true
-    xml.destination file("${buildDir}/jacocoXml")
-    csv.enabled false
-    html.enabled false
-  }
-}
 
-sonarqube {
-  properties {
-    property "sonar.projectKey", "tk-codes_uno"
-    property "sonar.organization", "tk-codes-github"
-    property "sonar.host.url", "https://sonarcloud.io"
-    property "sonar.coverage.exclusions", "**/ui/**/*"
-  }
-}
+apply from: "$rootDir/gradle/config/scripts/idea.gradle"
+apply from: "$rootDir/gradle/config/scripts/coverage.gradle"
 
-project.tasks["sonarqube"].dependsOn jacocoTestReport
+coverage.excludePackages = [
+]
+
+coverage.excludeClasses = [
+]
+
