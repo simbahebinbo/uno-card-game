@@ -1,10 +1,10 @@
-//package com.github.lansheng228.application;
+//package com.github.lansheng228.service;
 //
-//import com.github.lansheng228.application.dto.PlayerInfoDTO;
 //import com.github.lansheng228.domain.card.Card;
 //import com.github.lansheng228.domain.game.Game;
 //import com.github.lansheng228.domain.game.GameBuilder;
 //import com.github.lansheng228.domain.player.ImmutablePlayer;
+//import com.github.lansheng228.dto.PlayerInfoDTO;
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
 //

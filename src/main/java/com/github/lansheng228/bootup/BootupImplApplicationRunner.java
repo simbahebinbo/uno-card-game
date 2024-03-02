@@ -13,5 +13,12 @@ public class BootupImplApplicationRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         log.info("启动后执行");
+//        var appService = new GameAppService();
+//
+//        SwingUtilities.invokeLater(() -> {
+//            new AppFrame(appService);
+//
+//            log.info("UNO app is launched");
+//        });
     }
 }

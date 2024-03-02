@@ -1,22 +1,19 @@
 package com.github.lansheng228.dto;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.UUID;
 
-public class PlayerInfoDTO implements Serializable {
+
+@Slf4j
+@Data
+@Builder
+@AllArgsConstructor
+public class PlayerInfoDTO {
     private final UUID id;
     private final String name;
-
-    public PlayerInfoDTO(UUID id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
+
