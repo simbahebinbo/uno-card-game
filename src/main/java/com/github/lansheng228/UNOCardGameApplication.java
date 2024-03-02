@@ -17,14 +17,14 @@ public class UNOCardGameApplication {
         SpringApplication.run(UNOCardGameApplication.class, args);
     }
 
-//
+
 //    public static void main(String[] args) {
 //        var appService = new GameAppService();
 //
 //        SwingUtilities.invokeLater(() -> {
 //            new AppFrame(appService);
 //
-//            logger.info("UNO app is launched");
+////            logger.info("UNO app is launched");
 //        });
 //    }
 }
