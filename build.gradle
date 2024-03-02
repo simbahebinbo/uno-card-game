@@ -90,6 +90,8 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter:$springBootVersion")
     implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-websocket:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
     implementation "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
     implementation("org.springframework.boot:spring-boot-starter-data-rest:$springBootVersion")
 //    implementation("org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion")
@@ -101,12 +103,14 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-autoconfigure:$springBootVersion")
     implementation("org.springframework.boot:spring-boot-starter-validation:$springBootVersion")
 
+
     implementation("io.micrometer:micrometer-core:$micrometerVersion")
     implementation("io.micrometer:micrometer-registry-prometheus:$micrometerVersion")
 
 //    implementation "com.mysql:mysql-connector-j:${mysqlconnectorVersion}"
 //    implementation("org.redisson:redisson:${redissonVersion}")
 
+    implementation 'com.alibaba:fastjson:1.2.76'
     implementation "com.google.code.gson:gson:${gsonVersion}"
     implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")

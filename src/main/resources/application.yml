@@ -4,6 +4,24 @@ server:
   tomcat.uri-encoding: UTF-8
   shutdown: graceful
 
+spring:
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+  freemarker:
+    request-context-attribute: request
+    suffix: .html
+    content-type: text/html
+    enabled: true
+    cache: false
+    charset: UTF-8
+    allow-request-override: false
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+
+
 info.app.name: uno-card-game
 info.env.name: local
 
