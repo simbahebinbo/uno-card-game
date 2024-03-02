@@ -1,5 +1,5 @@
 server:
-  port: 9900
+  port: 9999
   tomcat.threads.max: 0
   tomcat.uri-encoding: UTF-8
   shutdown: graceful
